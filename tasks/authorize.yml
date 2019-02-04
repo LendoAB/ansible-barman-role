@@ -17,6 +17,8 @@
   delegate_to: "{{ item }}"
   with_items: "{{ all_hosts }}"
   ignore_errors: True
+  tags:
+    - authorize
 
 - name: Configure credentials for PSQL access to servers
   no_log: True
