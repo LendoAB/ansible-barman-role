@@ -18,7 +18,7 @@
   when: barman_data_dir is defined and barman_data_dir
 
 - name: Ensure dedicated data directory is owned by postgres
-  file: path={{ postgres_data_dir }} state=directory owner=postgres group=postgres
+  file: path={{ postgres_data_dir }} state=directory owner=barman group=barman
   when: postgres_data_dir is defined and postgres_data_dir
 
 - name: Copy barman configuration file
