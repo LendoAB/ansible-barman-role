@@ -1,7 +1,7 @@
 ---
 
 - name: Create dedicated data directory
-  file: path={{ barman_data_dir }} state=directory owner=postgres group=postgres
+  file: path={{ barman_data_dir }} state=directory mode=0777 # owner=barman group=barman
 
 - name: Check /var/lib/barman directory
   stat: path=/var/lib/barman/

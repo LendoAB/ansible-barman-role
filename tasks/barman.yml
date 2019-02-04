@@ -13,6 +13,10 @@
 - name: Install barman
   apt: name=barman state=present
 
+- name: Ensure dedicated data directory is owned by barman
+  file: path={{ barman_data_dir }} state=directory owner=barman group=barman
+  when: barman_data_dir is defined and barman_data_dir
+
 - name: Copy barman configuration file
   template: src=barman.conf.j2 dest=/etc/barman.conf
 
