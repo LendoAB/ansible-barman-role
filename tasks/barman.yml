@@ -7,6 +7,9 @@
   apt_repository: repo="deb http://apt.postgresql.org/pub/repos/apt/ {{ ansible_distribution_release }}-pgdg main"
   when: ansible_distribution_release != 'NA'
 
+- include: barman-data-directory.yml
+  when: barman_data_dir is defined and barman_data_dir
+
 - name: Install barman
   apt: name=barman state=present
 

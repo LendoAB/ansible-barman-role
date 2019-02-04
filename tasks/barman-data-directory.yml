@@ -1,0 +1,12 @@
+---
+
+- name: Create dedicated data directory
+  file: path={{ barman_data_dir }} state=directory owner=postgres group=postgres
+
+- name: Check /var/lib/barman directory
+  stat: path=/var/lib/barman/
+  register: var_lib_barman
+
+- name: Create a symlink between regular data directory and dedicated one
+  file: src={{ barman_data_dir }} dest=/var/lib/barman state=link
+  when: not var_lib_barman.stat.exists
