@@ -127,7 +127,7 @@ streaming_conninfo = host={{ primary_host_name }}
 {% endif %}
 retention_policy = {{ database.retention_policy | default('RECOVERY WINDOW OF 7 DAYS') }}
 retention_policy_mode = auto
-
+wal_retention_policy = {{ database.wal_retention_policy | default('main') }}
 {% endfor %}
 
 ;; ; 'main' PostgreSQL Server configuration
