@@ -2,3 +2,10 @@
 - include: barman.yml
   tags:
     - barman
+
+- include: authorize.yml
+  with_items: "{{ barman_databases }}"
+  loop_control:
+    loop_var: barman_database
+  tags:
+    - authorize
